@@ -129,7 +129,7 @@ export default function PanelSolicitante() {
     const pedidosSnap = await getDocs(
       query(collection(db, 'pedidos'), where('email', '==', user.email)),
     );
-            const docs = pedidosSnap.docs
+    const docs = pedidosSnap.docs
       .map((d) => ({ id: d.id, data: d.data() as PedidoData }))
       .sort((a, b) => {
         // Corregido para evitar el error de tipo "unknown"
@@ -359,15 +359,15 @@ export default function PanelSolicitante() {
                       <p className="text-xs text-gray-800">
                         Pedido: {pr.pedidoId}
                       </p>
-                     <p className="text-xs text-gray-700">
-  {
-    (() => {
-      const fecha = pr.fecha as { seconds?: number };
-      return new Date((fecha.seconds ?? 0) * 1000).toLocaleString();
-    })()
-  }
-</p>
- </div>
+                      <p className="text-xs text-gray-700">
+                        {(() => {
+                          const fecha = pr.fecha as { seconds?: number };
+                          return new Date(
+                            (fecha.seconds ?? 0) * 1000,
+                          ).toLocaleString();
+                        })()}
+                      </p>
+                    </div>
                   ))
                 )}
               </div>

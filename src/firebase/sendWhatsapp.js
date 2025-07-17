@@ -8,7 +8,6 @@ const client = require('twilio')(accountSid, authToken);
 
 // El resto de tu código...
 
-
 export const enviarWhatsApp = async (mensaje, numeroDestino) => {
   try {
     await client.messages.create({
